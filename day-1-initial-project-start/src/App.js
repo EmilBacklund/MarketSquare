@@ -1,25 +1,15 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from './store/modules/listings';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ProductListPage from './pages/ProductListPage';
+import ProductDetailPage from './pages/ProductDetailPage';
 
 function App() {
-  const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.listings);
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
-
-  console.log(products);
   return (
-    <div>
-      <h1 className="text-5xl">Hello</h1>
-      {products.map((product) => (
-        <div>
-          <span>{product.title}</span>
-        </div>
-      ))}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<ProductListPage />} />
+        <Route path='/:id' element={<ProductDetailPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
