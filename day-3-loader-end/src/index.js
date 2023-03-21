@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {Provider} from "react-redux";
-import store from "./store/store"
+import { Provider } from 'react-redux' // This is making the store global
+import store from './store'
 import {BrowserRouter} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
       <Provider store={store}>
           <BrowserRouter>
-              <App />
+            <App />
           </BrowserRouter>
       </Provider>
   </React.StrictMode>
