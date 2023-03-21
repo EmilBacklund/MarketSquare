@@ -1,11 +1,16 @@
-import Router from "./routes/Router"
+import Router from './routes/Router';
+import Loader from './components/shared/Loader';
+import { useSelector } from 'react-redux';
 
 function App() {
-    return (
-        <>
-            <Router/>
-        </>
-    );
+  const { isLoading } = useSelector((state) => state.loader);
+
+  return (
+    <>
+      <Router />
+      {isLoading && <Loader />}
+    </>
+  );
 }
 
 export default App;
