@@ -2,6 +2,7 @@ import React from 'react';
 import {useSelector} from "react-redux";
 import {useDispatch} from "react-redux";
 import {removeSingleProductFromCart} from "../../store/modules/cartSlice";
+import {Link} from "react-router-dom";
 
 const CartCheckOutPage = () => {
     const dispatch =  useDispatch();
@@ -85,7 +86,11 @@ const CartCheckOutPage = () => {
                             </p>
                         </div>
                     </div>
-                </div> : <h1>Sorry :(  You have not added any item to your cart</h1>}
+                </div> : <div className="bg-white p-8 rounded-lg shadow-lg">
+                    <p className="text-gray-600 text-xl mb-4">Sorry :( You have not added any item to your cart</p>
+                    <Link to="/" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Add Item</Link>
+                </div>
+                }
             </div>
         </div>
     );

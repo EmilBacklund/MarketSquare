@@ -8,10 +8,17 @@ const cartSlice = createSlice({
     },
     reducers: { // here we write the functions which will update the state
         ADD_PRODUCT_TO_CART: (state, action) => {
-            // TODO i will update my productsInCart
-            console.log("action: ", action);
-            state.productsInCart = [...state.productsInCart, action.payload];
-            state.numberOfProductsInCart = state.productsInCart.length
+            // Check if the product is already in the cart                          is my product id available in the productsInCart []
+            const isProductInCart = state.productsInCart && state.productsInCart.some(product => product.id === action.payload.id);
+
+            if (isProductInCart) {
+                // If the product is already in the cart, don't add it again
+
+            } else {
+                // If the product is not in the cart, add it to the cart
+                state.productsInCart = [...state.productsInCart, action.payload];
+                state.numberOfProductsInCart = state.productsInCart.length;
+            }
         },
         REMOVE_PRODUCT_FROM_CART:(state, action) => {
             console.log("state:",state);
